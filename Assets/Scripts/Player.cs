@@ -17,12 +17,19 @@ public class Player : MonoBehaviour {
     [Header("Components")]
     private PlayerInput _playerInput;
     private Rigidbody2D _rigidbody;
+    [SerializeField]
+    private Animator _animator;
+    [SerializeField]
+    private Transform _groundDetector;
+    [SerializeField]
+    private LayerMask _groundMask;
 
     [Header("Attributes")]
     [SerializeField]
     private float _speed = 2f;
     [SerializeField]
     private float _jumpForce = 10f;
+    private bool _onGround = false;
 
     private void OnEnable() {
         _playerInput.Enable();
@@ -41,11 +48,26 @@ public class Player : MonoBehaviour {
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
+    private void Update() {
+        OnGround();
+        UpdateAnimations();
+    }
+
     private void FixedUpdate() {
         _rigidbody.velocity = new Vector2(_speed, _rigidbody.velocity.y);
     }
 
+    private void UpdateAnimations() {
+        _animator.SetBool("onGround", _onGround);
+    }
+
     private void Jump() {
-        _rigidbody.AddForce(new Vector2(0f, _jumpForce), ForceMode2D.Impulse);
+        if(_onGround) {
+            _rigidbody.AddForce(new Vector2(0f, _jumpForce), ForceMode2D.Impulse);
+        }
+    }
+
+    private void OnGround() {
+        _onGround = Physics2D.Linecast(transform.position, _groundDetector.position, _groundMask);
     }
 }

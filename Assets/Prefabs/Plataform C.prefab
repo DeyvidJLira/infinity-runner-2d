@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2452284630129824431}
   - component: {fileID: 285271921390283983}
   - component: {fileID: 2260409447889460632}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7271990438511575507}
   - component: {fileID: 4207399769252001123}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plataform C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
