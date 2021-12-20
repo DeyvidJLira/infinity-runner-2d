@@ -213,7 +213,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _speed: 2
-  _jumpForce: 10
+  _jumpForce: 8
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +447,8 @@ MonoBehaviour:
   - {fileID: 3834786983437612915, guid: 10b47f19ffa30ae49b7e8e8871405ff2, type: 3}
   - {fileID: 7888450962021826007, guid: 303db133c9e16d449b2c329dd9e0f6d3, type: 3}
   - {fileID: 4207399769252001123, guid: 46a60ec4f90612147af69c6cf6ccf42a, type: 3}
-  _distanceX: 4
+  _distanceX: 2
+  _offset: {x: 0, y: -4.5}
 --- !u!4 &1708618536
 Transform:
   m_ObjectHideFlags: 0

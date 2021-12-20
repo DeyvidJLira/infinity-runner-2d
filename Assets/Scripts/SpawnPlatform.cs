@@ -19,9 +19,10 @@ public class SpawnPlatform : MonoBehaviour {
 
     [SerializeField]
     private float _distanceX = 4f;
+    [SerializeField]
+    private Vector2 _offset = new Vector2(0f, -4.5f);
 
     private List<Platform> currentPlatforms = new List<Platform>();    //instantiated list
-    private float _offset = 0f;
     private int _indexPlatformCurrent = 0;
 
     private Transform player;
@@ -30,8 +31,8 @@ public class SpawnPlatform : MonoBehaviour {
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         for(int i = 0; i < platforms.Count; i++) {
-            currentPlatforms.Add(Instantiate(platforms[i], new Vector2(platforms[i].getWidth() * i + _distanceX * i , 0), transform.rotation));
-            _offset += platforms[i].getWidth() * i + _distanceX * i;
+            currentPlatforms.Add(Instantiate(platforms[i], new Vector2(platforms[i].getWidth() * i + _distanceX * i , _offset.y + platforms[i].getModifierY()), transform.rotation));
+            _offset.x += platforms[i].getWidth() * i + _distanceX * i;
         }
     }
 
@@ -52,7 +53,7 @@ public class SpawnPlatform : MonoBehaviour {
 
     // Realoca a plataforma para uma posição após a última plataforma no gameplay
     private void Recycle(Platform platform) {
-        platform.transform.position = new Vector2(_offset + _distanceX, 0f);
-        _offset += platform.getWidth() + _distanceX;
+        platform.transform.position = new Vector2(_offset.x + _distanceX, _offset.y + platform.getModifierY());
+        _offset.x += platform.getWidth() + _distanceX;
     }
 }

@@ -16,6 +16,8 @@ public class Platform : MonoBehaviour {
 
     [SerializeField]
     private SpriteRenderer _sprite;
+    [SerializeField]
+    private float _modifierY = 0f;
 
     // Retorna a largura da plataforma
     public float getWidth() {
@@ -30,5 +32,10 @@ public class Platform : MonoBehaviour {
     // Retorna a última posição X no lado direito da plataforma
     public float getLimitX() {
         return transform.position.x + _sprite.sprite.bounds.size.x / 2;
+    }
+
+    // Retorna um valor para modificar a posição no eixo Y
+    public float getModifierY() {
+        return _modifierY;
     }
 }
