@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * @author Deyvid Jaguaribe
+ * @website https://deyvidjlira.com/
+ * 
+ * @created_at 22/12/2021
+ * @last_update 22/12/2021
+ * @description classe responsável por definir a básico para o inimigo
+ * 
+ */
+
 abstract public class EnemyBase : MonoBehaviour {
 
     protected Rigidbody2D _rigidbody;
