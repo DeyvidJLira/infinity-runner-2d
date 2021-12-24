@@ -7,16 +7,19 @@ using UnityEngine;
  * @website https://deyvidjlira.com/
  * 
  * @created_at 22/12/2021
- * @last_update 22/12/2021
+ * @last_update 24/12/2021
  * @description classe responsável por definir a básico para o inimigo
  * 
  */
 
 abstract public class EnemyBase : MonoBehaviour {
 
+    protected Animator _animator;
     protected Rigidbody2D _rigidbody;
-    
+
     [Header("Attributes")]
+    [SerializeField]
+    protected EnemyType _enemyType;
     [SerializeField]
     protected int _life = 3;
     [SerializeField]
@@ -26,12 +29,18 @@ abstract public class EnemyBase : MonoBehaviour {
 
     // Start is called before the first frame update
     protected void Start() {
+        _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    protected void Update() {
+        if (!_isActive) return;
+        Movement();
     }
 
     protected void FixedUpdate() {
         if (!_isActive) return;
-        Movement();
+        MovementPhysics();
     }
     protected void OnBecameVisible() {
         _isActive = true;
@@ -43,4 +52,12 @@ abstract public class EnemyBase : MonoBehaviour {
 
     abstract public void Movement();
 
+    abstract public void MovementPhysics();
+
+    abstract protected void Attack();
+
+    abstract protected void Die();
+
 }
+
+public enum EnemyType { FLY, GROUND }

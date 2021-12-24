@@ -16,9 +16,16 @@ public class Platform : MonoBehaviour {
 
     [SerializeField]
     private SpriteRenderer _sprite;
-
     [SerializeField]
     private float _modifierY = 0f;
+    [SerializeField]
+    private List<Transform> _listSpawnPoints;
+    [SerializeField]
+    private bool _enableSpawnEnemy = false;
+    [SerializeField]
+    private GameObject _enemyPrefab;
+
+    
 
     private bool _isAfterPlayer = false;
     private bool _canRecycle = false;
@@ -54,9 +61,16 @@ public class Platform : MonoBehaviour {
     public void Recycled() {
         _canRecycle = false;
         _isAfterPlayer = false;
+        SpawnEnemy();
     }
 
     private void OnBecameInvisible() {
         if (!_canRecycle && _isAfterPlayer) _canRecycle = true;
+    }
+
+    private void SpawnEnemy() {
+        int pos = Random.Range(0, _listSpawnPoints.Count);
+        if (pos == _listSpawnPoints.Count) return;
+        Instantiate(_enemyPrefab, _listSpawnPoints[pos].position, Quaternion.identity, transform);
     }
 }
