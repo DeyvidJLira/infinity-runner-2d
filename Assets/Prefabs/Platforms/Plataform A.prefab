@@ -79,13 +79,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 5726976741543057754}
+  _modifierY: 0
   _listSpawnPoints:
   - {fileID: 4928392110986103058}
   - {fileID: 7150066200503286144}
   - {fileID: 3589497297220071055}
   _enableSpawnEnemy: 1
   _enemyPrefab: {fileID: 4326279299524906838, guid: 680b1240ed506f346b2846042483801f, type: 3}
-  _modifierY: 0
 --- !u!212 &5726976741543057754
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -123,8 +123,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -519144705
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c1c83abaf7ea5fa4b806f021696e7ace, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
