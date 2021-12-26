@@ -19,10 +19,21 @@ public class Player : MonoBehaviour {
     private Rigidbody2D _rigidbody;
     [SerializeField]
     private Animator _animator;
+
+    [Header("Ground Collision")]
     [SerializeField]
     private Transform _groundDetector;
     [SerializeField]
     private LayerMask _groundMask;
+
+    [Header("Shoot")]
+    [SerializeField]
+    private Transform _firePoint;
+    [SerializeField]
+    private GameObject _shootPrefab;
+    [SerializeField]
+    private float _shootIntervalTime;
+    private float _shootElapsedTime = 0f;
 
     [Header("Attributes")]
     [SerializeField]
@@ -42,6 +53,7 @@ public class Player : MonoBehaviour {
     private void Awake() {
         _playerInput = new PlayerInput();
         _playerInput.Gameplay.Jump.performed += ctx => Jump();
+        _playerInput.Gameplay.Shoot.performed += ctx => Shoot();
     }
 
     private void Start() {
@@ -51,6 +63,8 @@ public class Player : MonoBehaviour {
     private void Update() {
         OnGround();
         UpdateAnimations();
+
+        _shootElapsedTime += Time.deltaTime;
     }
 
     private void FixedUpdate() {
@@ -69,5 +83,12 @@ public class Player : MonoBehaviour {
 
     private void OnGround() {
         _onGround = Physics2D.Linecast(transform.position, _groundDetector.position, _groundMask);
+    }
+
+    private void Shoot() {
+        if(_shootElapsedTime >= _shootIntervalTime) {
+            Instantiate(_shootPrefab, _firePoint.position, transform.rotation);
+            _shootElapsedTime = 0f;
+        }
     }
 }
