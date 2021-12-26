@@ -7,7 +7,7 @@ using UnityEngine;
  * @website https://deyvidjlira.com/
  * 
  * @created_at 15/12/2021
- * @last_update 15/12/2021
+ * @last_update 26/12/2021
  * @description classe responsável por controlar o player
  * 
  */

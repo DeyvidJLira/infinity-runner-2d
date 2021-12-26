@@ -7,7 +7,7 @@ using UnityEngine;
  * @website https://deyvidjlira.com/
  * 
  * @created_at 24/12/2021
- * @last_update 24/12/2021
+ * @last_update 26/12/2021
  * @description classe responsável por controlar o inimigo do tipo Ground
  * 
  */
@@ -44,6 +44,10 @@ public class EnemyGround : EnemyBase {
 
     protected override void Die() {
         _animator.SetTrigger("die");
+    }
+
+    protected void OnFinishedDieAnimation() {
+        Destroy(gameObject);
     }
 
     protected void FinishedAttack() {

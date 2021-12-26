@@ -154,5 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43bb40bf0eb13d4ebea9bcabf4e49e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 3
+  _enemyType: 0
+  _life: 1
   _speed: 2

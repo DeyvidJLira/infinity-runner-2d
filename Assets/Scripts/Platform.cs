@@ -67,9 +67,7 @@ public class Platform : MonoBehaviour {
     }
 
     private void SpawnEnemy() {
-        Debug.Log(_listSpawnPoints.Count);
         int pos = Random.Range(0, _listSpawnPoints.Count);
-        Debug.Log("Pos: " + _listSpawnPoints.Count);
         if (pos == _listSpawnPoints.Count) return;
         Instantiate(_enemyPrefab, _listSpawnPoints[pos].position, Quaternion.identity, transform);
     }

@@ -2,11 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * @author Deyvid Jaguaribe
+ * @website https://deyvidjlira.com/
+ * 
+ * @created_at 26/12/2021
+ * @last_update 26/12/2021
+ * @description classe responsável por controlar o tiro do jogador
+ * 
+ */
+
 public class Missile : MonoBehaviour {
 
-    [SerializeField]
     private Rigidbody2D _rigidbody;
 
+    [SerializeField]
+    private GameObject _collisionEffect;
+
+    [SerializeField]
+    private int _damage;
     [SerializeField]
     private float _speedX;
 
@@ -21,6 +35,18 @@ public class Missile : MonoBehaviour {
 
     private void OnBecameInvisible() {
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.tag != "Player") {
+            var objectDamageable = collision.GetComponent<IDamageable>();
+            if (objectDamageable != null) {
+                objectDamageable.OnDamage(_damage);
+            }
+            Instantiate(_collisionEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+        
     }
 
 }
