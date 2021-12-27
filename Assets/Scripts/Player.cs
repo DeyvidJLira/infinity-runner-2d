@@ -91,4 +91,10 @@ public class Player : MonoBehaviour {
             _shootElapsedTime = 0f;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.layer == 9) {
+            GameManager.Instance.GameOver();
+        }
+    }
 }
