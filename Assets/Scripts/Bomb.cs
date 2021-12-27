@@ -7,7 +7,7 @@ using UnityEngine;
  * @website https://deyvidjlira.com/
  * 
  * @created_at 24/12/2021
- * @last_update 24/12/2021
+ * @last_update 27/12/2021
  * @description classe responsável por controlar o projétil do tipo bomba
  * 
  */
@@ -15,6 +15,9 @@ using UnityEngine;
 public class Bomb : MonoBehaviour {
 
     private Rigidbody2D _rigidbody;
+
+    [SerializeField]
+    private int _damage;
 
     [SerializeField]
     private Vector2 _direction = new Vector2(0f,0f);
@@ -28,4 +31,12 @@ public class Bomb : MonoBehaviour {
     private void OnBecameInvisible() {
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.tag == "Player") {
+            collision.GetComponent<Player>().OnHit(_damage);
+            Destroy(gameObject);
+        }
+    }
+
 }

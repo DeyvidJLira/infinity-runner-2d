@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+ * @author Deyvid Jaguaribe
+ * @website https://deyvidjlira.com/
+ * 
+ * @created_at 27/12/2021
+ * @last_update 27/12/2021
+ * @description classe responsável gerenciar operações que podem ser utilizadas em diferentes momentos por diferentes objetos
+ * 
+ */
+
 public class GameManager : MonoBehaviour {
 
     public static GameManager Instance {

@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf27249c2b8c41b44aafe5cfc41d4846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 960378564}
   _animator: {fileID: 960378563}
   _groundDetector: {fileID: 2048523342}
   _groundMask:
@@ -612,6 +613,7 @@ MonoBehaviour:
   _firePoint: {fileID: 1256663786}
   _shootPrefab: {fileID: 8516926918228893595, guid: 2c9b4e7c988db744da11c0ab80f7a0bd, type: 3}
   _shootIntervalTime: 0.4
+  _life: 3
   _speed: 3
   _jumpForce: 10
 --- !u!4 &512977412 stripped
